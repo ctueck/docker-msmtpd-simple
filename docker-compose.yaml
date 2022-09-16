@@ -1,0 +1,18 @@
+version: "3.0"
+
+services:
+
+  msmtpd:
+    build: .
+    init: true
+    ports:
+      - "${MSMTP_PORT:-2525}:25/tcp"
+    environment:
+      - MSMTP_DOMAIN
+      - MSMTP_FROM
+      - MSMTP_TLS
+      - MSMTP_RELAY
+      - MSMTP_RELAY_PORT
+      - MSMTP_RELAY_USER
+      - MSMTP_RELAY_PASSWORD
+
