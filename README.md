@@ -16,3 +16,11 @@ The template `msmtprc` file is parsed by envsubst(1) on container start.
 - `MSMTP_RELAY_PORT`: SMTP relay port (default: `587`)
 - `MSMTP_RELAY_USER` and `MSMTP_RELAY_PASSWORD`: SMTP relay credentials
 
+Envelope-from addresses
+-----------------------
+
+The default configuration tries to ensure that envelope-from addresses are useful:
+
+1. If the application provides an envelope-from address with `MSMTP_DOMAIN` as the domain part, it remains unchanged.
+2. Any other envelope-from addresses are rewritten to `MSMTP_FROM`.
+
