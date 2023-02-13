@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:latest
 
 ARG LC_ALL=C
 
