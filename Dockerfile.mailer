@@ -1,0 +1,16 @@
+FROM python:3.11-alpine
+
+ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
+
+ARG LC_ALL=C
+
+# Install Python packages
+ADD requirements.txt /
+RUN pip install -r /requirements.txt
+ADD ansi-mailer.py /usr/local/bin
+
+ENTRYPOINT [ "/usr/local/bin/ansi-mailer.py" ]
+
+CMD [ "--help" ]
+

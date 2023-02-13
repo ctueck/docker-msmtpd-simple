@@ -16,3 +16,17 @@ services:
       - MSMTP_RELAY_USER
       - MSMTP_RELAY_PASSWORD
 
+  mailer:
+    profiles:
+      - mailer
+    depends_on:
+      - msmtpd
+    build:
+      context: .
+      dockerfile: Dockerfile.mailer
+    environment:
+      - ANSI_MAILER_RELAY=msmtpd
+      - ANSI_MAILER_PORT=25
+      - ANSI_MAILER_FROM
+      - ANSI_MAILER_SUBJECT
+
